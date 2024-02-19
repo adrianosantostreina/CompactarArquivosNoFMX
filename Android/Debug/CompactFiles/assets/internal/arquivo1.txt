@@ -1,0 +1,76 @@
+  C_SQL_NEWREQUESTS =
+    'SELECT                                                            ' +
+    '   R.ID_REPARACAO                                                 ' +
+    '  ,R.NUM_TRACKING AS Tracking                                     ' +
+    '  ,R.COD_TIPO_GAR as InterventionTypeId                           ' +
+    '  ,R.DAT_ENTRADA as CreateDate                                    ' +
+    '  ,REP.COD_ASA as ASACode                                         ' +
+    '  ,REP.NOM_ENTIDADE AS ASAName                                    ' +
+    //'  --                                                              ' +
+    //'  --Consumer                                                      ' +
+    '  ,R.NOM_CLIENTE as Consumer_Name                                 ' +
+    '  ,R.COD_DDI_TELEMOVEL                                            ' +
+    '  ,R.NUM_TELEMOVEL as Consumer_MobileNumber                       ' +
+    '  ,R.COD_DDI_TELEFONE                                             ' +
+    '  ,R.NUM_TELEFONE as Consumer_PhoneNumber                         ' +
+    '  ,R.COD_CONTRIBUINTE as Consumer_TaxpayerNumber                  ' +
+    '  ,R.NOM_EMAIL as Consumer_Email                                  ' +
+    '  ,R.NOM_MORADA as Consumer_Address                               ' +
+    '  ,R.NOM_LOCALIDADE as Consumer_Locale                            ' +
+    '  ,R.COD_POSTAL as Consumer_Zip                                   ' +
+    '  ,R.NOM_CIDADE as City                                           ' +
+    '  ,P.COD_PAIS as CountryCode                                      ' +
+    '  ,R.NOM_CONTATO as ContactName                                   ' +
+    //'  -- Consumer                                                     ' +
+    //'  --                                                              ' +
+    '  ,R.DAT_COMPRA AS PurchaseDate                                   ' +
+    '  ,R.DAT_PREFERENCIAL as SuggestedDate                            ' +
+    '  ,IIF(R.NOM_ARQ_FATURA IS NULL,''N'',''S'') as IsConsumerInvoice ' +
+    '  ,R.NOM_OBS as Remark                                            ' +
+    '  ,R.NUM_PROCESSO as ShopProcessNumber                            ' +
+    '  ,R.NOM_AVARIA as DefectDesc                                     ' +
+    //'  -- Equipament                                                   ' +
+    '  ,R.COD_MODELO as ModelCode                                      ' +
+    '  ,R.NOM_MODELO as CommercialModel                                ' +
+    '  ,R.COD_NUMSERIE as SerialNumber                                 ' +
+    '  ,M.NOM_MARCA as BrandName                                       ' +
+    '  ,TE.NOM_TIPO as FamilyName                                      ' +
+    '  ,MO.COD_EAN as EANCode                                          ' +
+    '  ,MO.IND_BLACKLIST as IsBlackList                                ' +
+    //'  -- Equipament                                                   ' +
+    //'  --                                                              ' +
+    //'  -- Reseller                                                     ' +
+    '  ,LJ.NOM_ENTIDADE AS Reseller_Name                               ' +
+    '  ,LJ.NUM_TELEFONE AS Reseller_PhoneNumber                        ' +
+    '  ,LJ.NUM_CONTRIBUINTE AS Reseller_TaxpayerNumber                 ' +
+    '  ,LJ.NOM_EMAIL AS Reseller_Email                                 ' +
+    '  ,LJ.NOM_MORADA AS Reseller_Address                              ' +
+    '  ,LJ.NOM_LOCALIDADE AS Reseller_Locale                           ' +
+    '  ,LJ.COD_POSTAL AS Reseller_Zip                                  ' +
+    '  ,LJ.NOM_RESPONSAVEL as ShopManager                              ' +
+    //'  -- Reseller                                                     ' +
+    //'  --                                                              ' +
+    //'  -- Agora                                                        ' +
+    '  ,R.NUM_MANDATEID as MandateID                                   ' +
+    '  ,R.NUM_REPAIRID as RepairID                                     ' +
+    //'  -- Agora                                                        ' +
+    '  FROM TB_REPARACAO R                                             ' +
+    '  LEFT JOIN TB_MARCA M                                            ' +
+    '  ON (M.ID_MARCA=R.ID_MARCA)                                      ' +
+    '  LEFT JOIN TB_MODELO MO                                          ' +
+    '  ON (MO.ID_MODELO=R.ID_MODELO)                                   ' +
+    '  LEFT JOIN TB_TIPO_EQUIPAMENTO TE                                ' +
+    '  ON (TE.COD_LINHA=MO.COD_LINHA)                                  ' +
+    '  LEFT JOIN TB_PAIS P                                             ' +
+    '  ON (P.ID_PAIS=R.ID_PAIS)                                        ' +
+    '  LEFT JOIN TB_ENTIDADE REP                                       ' +
+    '  ON (REP.ID_ENTIDADE=R.ID_REPARADOR)                             ' +
+    '  LEFT JOIN TB_ENTIDADE LJ                                        ' +
+    '  ON (LJ.ID_ENTIDADE=R.ID_ENTIDADE)                               ' +
+    'WHERE                                                             ' +
+    '      R.ID_REPARADOR = :pID_REPARADOR                             ' +
+    '  AND R.IND_ENVIO_API=''N''                                       ' +
+    '  AND R.IND_GUARDADO=''N''                                        ' +
+    '  AND R.NUM_REPAIRID IS NOT NULL                                  ' +
+    'ORDER BY                                                          ' +
+    '  R.NUM_TRACKING                                                  ';

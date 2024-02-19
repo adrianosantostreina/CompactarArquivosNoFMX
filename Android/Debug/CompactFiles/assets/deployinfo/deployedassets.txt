@@ -1,0 +1,3 @@
+.\assets\internal\matteo1.jpeg
+.\assets\internal\arquivo1.txt
+.\assets\internal\teste2.jpg

@@ -1,0 +1,50 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 600
+  ClientWidth = 400
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Align = Top
+    Size.Width = 400.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Compactar'
+    TextSettings.Trimming = None
+    OnClick = Button1Click
+  end
+  object ListBox1: TListBox
+    Align = Client
+    Size.Width = 400.000000000000000000
+    Size.Height = 512.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 400.000000000000000000
+    Viewport.Height = 512.000000000000000000
+  end
+  object MobilePermissions1: TMobilePermissions
+    Left = 184
+    Top = 288
+  end
+  object Button2: TButton
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Apagar arquivo.zip'
+    TextSettings.Trimming = None
+    OnClick = Button2Click
+  end
+end
